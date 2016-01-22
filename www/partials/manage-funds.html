@@ -1,0 +1,13 @@
+<div class="list">
+    <div class="item item-divider">
+        <h3>Balance</h3>
+    </div>
+    <label class="item item-input item-stacked-label">
+        <span class="input-label">Amount</span>
+        <input type="number" placeholder="0.00" ng-model="funds">
+    </label>
+    <button class="button button-positive button-block" ng-click="update(funds)">Update</button>
+    <button ng-click="openPopover($event)" class="button button-block button-balanced">
+        Help
+    </button>
+</div>

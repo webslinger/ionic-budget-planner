@@ -1,0 +1,43 @@
+<p>
+    <button ng-click="openPopover($event)" class="button button-block button-balanced">
+        Add New Bill
+    </button>
+</p>
+
+<h2>Bills</h2>
+<div class="list">
+    <div ng-if="!dues.length">
+        <h3>Uh oh!</h3>
+        Looks like you don't have any bills. How awesome is that?<br>
+        Use the big green button above to add bills. We both know they're out there...
+    </div>
+    <div ng-repeat="due in dues">
+        <div class="item item-icon-right item-divider" ng-click="due.showContents = !due.showContents">
+            <i class="icon ion-chevron-down"></i>
+            {{ due.label }}
+        </div>
+        <div ng-show="due.showContents">
+            <div class="item" ng-hide="due.editmode">{{ due.amount | currency }}</div>
+            <div class="item" ng-hide="due.editmode">Due Date: {{ due.day_of_month }}</div>
+            <!-- Edit Mode -->
+            <label class="item item-input item-stacked-label" ng-show="due.editmode">
+                <span class="input-label">Amount</span>
+                <input type="number" placeholder="0.00" ng-model="due.amount">
+            </label>
+            <label class="item item-input item-stacked-label" ng-show="due.editmode">
+                <span class="input-label">Due Date</span>
+                <input type="number" placeholder="1" ng-model="due.day_of_month">
+            </label>
+            <!-- -->
+            <div class="item">
+                <button class="button button-positive" ng-click="edit(due)">
+                    <span ng-show="due.editmode">Done</span>
+                    <span ng-show="!due.editmode">Edit</span>
+                </button>
+                <button class="button button-positive" ng-click="remove(due)">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<form action="" role="form" class="row">
+    <div class="list col">
+        <h3>Add New Income</h3>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Label</span>
+            <input type="text" placeholder="Payer Name" ng-model="form.label">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Amount</span>
+            <input type="number" placeholder="0.00" ng-model="form.amount">
+        </label>
+        <label class="item item-input item-select">
+            <div class="input-label">
+                Frequency
+            </div>
+            <select ng-model="form.frequency">
+                <option value="1">Semi-Monthly</option>
+                <option value="2" selected>Bi-Weekly</option>
+            </select>
+        </label>
+        <label class="item item-input item-stacked-label" ng-if="form.frequency">
+            <span class="input-label">Options</span>
+            <input ng-model="form.frequency_options" type="text" placeholder="Pay days, e.g. 1,15" ng-if="form.frequency == 1">
+            <input ng-model="form.frequency_options" type="date" placeholder="Next pay day, e.g. 15" ng-if="form.frequency == 2">
+        </label>
+        <button class="button button-block button-balanced" ng-click="add()">Add</button>
+        <button class="button button-block button-stable" ng-click="closePopover()">Cancel</button>
+    </div>
+</form>

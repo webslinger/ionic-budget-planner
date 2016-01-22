@@ -1,0 +1,45 @@
+<p>
+    <button ng-click="openPopover($event)" class="button button-block button-balanced">
+        Add New Income
+    </button>
+</p>
+
+<h2>Income</h2>
+<div class="list">
+    <div ng-if="!incomes.length">
+        <h3>Uh oh!</h3>
+        Looks like you don't have any income. How pitiful.<br>
+        Use the big green button above to add income souces!
+    </div>
+    <div ng-repeat="income in incomes">
+        <div class="item item-icon-right item-divider" ng-click="income.showContents = !income.showContents">
+            <i class="icon ion-chevron-down"></i>
+            {{ income.label }}
+        </div>
+        <div ng-show="income.showContents">
+            <div class="item" ng-hide="income.editmode">{{ income.amount | currency }}</div>
+            <div class="item" ng-hide="income.editmode">{{ income.frequency_label }}</div>
+            <!-- Edit Mode -->
+            <label class="item item-input item-stacked-label" ng-if="income.editmode">
+                <span class="input-label">Amount</span>
+                <input type="number" placeholder="0.00" ng-model="income.amount">
+            </label>
+            <label class="item item-input item-stacked-label" ng-if="income.editmode">
+                <span class="input-label">Payday(s)</span>
+                <input ng-model="income.day_of_month" type="text" placeholder="Pay days, e.g. 1,15" ng-if="income.frequency == 1">
+                <input id="test" ng-model="income.day_of_month" type="date" placeholder="Next pay day, e.g. 15" ng-if="income.frequency == 2">
+            </label>
+            <!-- -->
+
+            <div class="item">
+                <button class="button button-positive" ng-click="edit(income)">
+                    <span ng-show="income.editmode">Done</span>
+                    <span ng-show="!income.editmode">Edit</span>
+                </button>
+                <button class="button button-positive" ng-click="remove(income)">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

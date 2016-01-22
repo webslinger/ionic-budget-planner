@@ -1,0 +1,19 @@
+<form action="" role="form" class="row">
+    <div class="list col">
+        <h3>Add New Bill</h3>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Label</span>
+            <input type="text" placeholder="Payee Name" ng-model="form.label">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Amount</span>
+            <input type="number" placeholder="0.00" ng-model="form.amount">
+        </label>
+        <label class="item item-input item-stacked-label">
+            <span class="input-label">Day of Month</span>
+            <input type="number" placeholder="0.00" ng-model="form.day_of_month">
+        </label>
+        <button class="button button-block button-balanced" ng-click="add()">Add</button>
+        <button class="button button-block button-stable" ng-click="closePopover()">Cancel</button>
+    </div>
+</form>

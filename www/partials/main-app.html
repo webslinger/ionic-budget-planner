@@ -1,0 +1,35 @@
+<div ng-show="alarm || warn" class="list alerts">
+    <div class="item item-icon-left alarm" ng-show="alarm && !hideAlarm">
+        <i class="icon ion-alert-circled"></i>
+        <i class="icon ion-trash-a" ng-click="hideAlarm = true"></i>
+        It looks like you've run overbudget.
+    </div>
+    <div class="item item-icon-left warn" ng-show="warn && !alarm && !hideWarn">
+        <i class="icon ion-information-circled"></i>
+        <i class="icon ion-trash-a" ng-click="hideWarn = true"></i>
+        It looks like you're at risk of going overbudget.
+    </div>
+</div>
+<div class="list">
+    <div ng-repeat="day in days">
+        <div class="item item-divider item-icon-right" ng-click="day.showContents = !day.showContents" ng-class="{ 'danger': day.balance < 0, 'warning': day.balance < 500 }">
+            <i class="icon ion-chevron-down"></i>
+            {{ day.date.toDateString() }}
+            <span class="badge badge-assertive" ng-if="day.outgoing.length"><i class="ion-arrow-down-a"></i></span>
+            <span class="badge badge-balanced" ng-if="day.incoming.length"><i class="ion-arrow-up-a"></i></span>
+        </div>
+        <div ng-show="day.showContents">
+            <div class="item balance">
+                <b>Balance:</b> {{ day.balance | currency }}
+            </div>
+            <label ng-repeat="income in day.incoming" class="item item-stacked-label income" ng-if="day.incoming.length">
+                <span class="input-label"><b>{{ income.label }}</b></span>
+                <div>{{ income.amount | currency }}</div>
+            </label>
+            <label ng-repeat="bill in day.outgoing" class="item item-stacked-label bill" ng-if="day.outgoing.length && bill.amount">
+                <span class="input-label"><b>{{ bill.label }}</b></span>
+                <div>{{ bill.amount | currency}}</div>
+            </label>
+        </div>
+    </div>
+</div>
