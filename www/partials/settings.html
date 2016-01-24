@@ -1,0 +1,35 @@
+<div ng-controller="settingsCtrl">
+    <div class="list" ng-show="settings.texts">
+        <h4>Warnings</h4>
+        <div class="item item-input-inset" ng-repeat="text in settings.texts">
+            <span class="input-label">{{ text.label }}</span>
+            <label class="item-input-wrapper">
+                <input type="{{ text.type }}" ng-model="text.value" ng-change="save()" >
+            </label>
+            <button class="button button-small" ng-click="openTooltip('{{ text.tip }}')">
+                <i class="icon ion-help"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="list" ng-show="settings.ranges">
+        <h4>Configuration</h4>
+        <span ng-repeat="range in settings.ranges">
+            <label class="item">
+                {{ range.label }}
+                <span class="badge">{{ range.value }} Months</span>
+            </label>
+            <div class="item range range-positive">
+                {{ range.min }}
+                <input ng-model="range.value" type="range" min="{{ range.min }}" max="{{ range.max }}" step="{{ range.step }}" ng-change="save()">
+                {{ range.max }}
+            </div>
+        </span>
+        <ion-list ng-show="settings.checkboxes">
+            <ion-checkbox ng-repeat="checkbox in settings.checkboxes" ng-model="checkbox.checked" ng-change="save()">
+                {{ checkbox.label }}
+                <span class="badge"><i class="icon ion-help"></i></span>
+            </ion-checkbox>
+        </ion-list>
+    </div>
+</div>

@@ -15,9 +15,7 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src="js/app-deploy.js"></script>
 </head>
 <body ng-app="starter">
 <ion-pane>
@@ -26,10 +24,11 @@
     </ion-header-bar>
 
     <div class="tabs">
-        <a ui-sref="home" class="tab-item">Forecast</a>
-        <a ui-sref="bills" class="tab-item">Bills</a>
-        <a ui-sref="income" class="tab-item">Income</a>
-        <a ui-sref="banked" class="tab-item">Banked</a>
+        <a ui-sref="home" class="tab-item"><i class="icon ion-stats-bars"></i></a>
+        <a ui-sref="bills" class="tab-item"><i class="icon ion-arrow-graph-down-right"></i></a>
+        <a ui-sref="income" class="tab-item"><i class="icon ion-arrow-graph-up-right"></i></a>
+        <a ui-sref="banked" class="tab-item"><i class="icon ion-cash"></i></a>
+        <a ui-sref="settings" class="tab-item"><i class="icon ion-gear-b"></i></a>
     </div>
     <ion-content>
         <div ui-view="">

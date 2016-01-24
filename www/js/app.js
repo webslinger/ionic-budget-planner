@@ -23,7 +23,6 @@ billTrack.run(function($ionicPlatform) {
     });
 });
 
-billTrack.constant('today', new Date());
 billTrack.constant('projectedMonths', 3);
 
 billTrack.config(function($stateProvider, $urlRouterProvider) {
@@ -48,5 +47,10 @@ billTrack.config(function($stateProvider, $urlRouterProvider) {
             url: "/manage/funds",
             templateUrl: "partials/manage-funds.html",
             controller: 'fundCtrl'
+        })
+        .state('settings', {
+            url: "/settings",
+            templateUrl: "partials/settings.html",
+            controller: 'settingsCtrl'
         });
 });

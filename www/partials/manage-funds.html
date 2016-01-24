@@ -1,13 +1,41 @@
 <div class="list">
     <div class="item item-divider">
-        <h3>Balance</h3>
+        <h3>Checkings</h3>
     </div>
-    <label class="item item-input item-stacked-label">
+    <div class="item item-input-inset">
         <span class="input-label">Amount</span>
-        <input type="number" placeholder="0.00" ng-model="funds">
-    </label>
-    <button class="button button-positive button-block" ng-click="update(funds)">Update</button>
-    <button ng-click="openPopover($event)" class="button button-block button-balanced">
-        Help
-    </button>
+        <label class="item-input-wrapper">
+            <input type="number" ng-model="funds" ng-change="save()" >
+        </label>
+        <button class="button button-small" ng-click="openTooltip('helpTooltip')">
+            <i class="icon ion-help"></i>
+        </button>
+    </div>
+</div>
+<div class="list">
+    <div class="item item-divider">
+        <h3>Budgets</h3>
+    </div>
+    <div class="item" ng-repeat="range in budgets">
+        <label class="item">
+            {{ range.label }}
+            <span class="badge">{{ range.value | currency }}</span>
+        </label>
+        <div class="item range range-positive">
+            {{ range.min }}
+            <input ng-model="range.value" type="range" min="{{ range.min }}" max="{{ range.max }}" step="{{ range.step }}" ng-change="save()">
+            {{ range.max }}
+        </div>
+        <label class="item item-input item-select">
+            <div class="input-label">
+                Every
+            </div>
+            <select ng-model="range.interval" ng-change="save()">
+                <option value="1">Day</option>
+                <option value="2">Week</option>
+                <option value="3">2 Weeks</option>
+                <option value="4">Month</option>
+            </select>
+        </label>
+    </div>
 </div>
