@@ -94,6 +94,15 @@ ion-content {
     + .badge {
       margin-right: 30px;
     }
+    i {
+      font-size: 24px;
+      &.ion-arrow-graph-down-right {
+        color: #f00;
+      },
+      &.ion-arrow-graph-up-right {
+        color: #090;
+      }
+    }
   }
   &.balance {
     padding-top: 5px;
@@ -109,13 +118,13 @@ ion-content {
     padding: 10px;
     padding-left: 20px;
     background: rgba(127,255,127,0.2);
-    border-left: 5px solid #fff;
+    border-left: 5px solid #f0f0f0;
   }
   &.bill {
     padding: 10px;
     padding-left: 20px;
     background: rgba(255,127,127,0.2);
-    border-left: 5px solid #fff;
+    border-left: 5px solid #f0f0f0;
   }
 }
 

@@ -23,8 +23,6 @@ billTrack.run(function($ionicPlatform) {
     });
 });
 
-billTrack.constant('projectedMonths', 3);
-
 billTrack.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
     $stateProvider

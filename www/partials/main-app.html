@@ -7,8 +7,8 @@
         <div class="item item-divider item-icon-right" ng-click="day.showContents = !day.showContents" ng-class="{ 'danger': day.balance < day.limit.alarm, 'warning': day.balance < day.limit.warning }">
             <i class="icon ion-chevron-down"></i>
             {{ day.date.toDateString() }}
-            <span class="badge badge-assertive" ng-if="day.outgoing.length"><i class="ion-arrow-down-a"></i></span>
-            <span class="badge badge-balanced" ng-if="day.incoming.length"><i class="ion-arrow-up-a"></i></span>
+            <span class="badge" ng-if="day.outgoing.length"><i class="ion-arrow-graph-down-right"></i></span>
+            <span class="badge" ng-if="day.incoming.length"><i class="ion-arrow-graph-up-right"></i></span>
         </div>
         <div ng-show="day.showContents">
             <div class="item balance">
